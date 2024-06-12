@@ -20,6 +20,9 @@ var time_scale : float = 1
 @onready var next_sound = $Next
 
 # UI
+@onready var main_menu_ui = $UI/MainMenu
+@onready var game_ui = $UI/Game
+@onready var high_score_label = $UI/MainMenu/HighScore
 @onready var label_anim = $UI/Game/LabelAnimations
 @onready var score_label = $UI/Game/ScoreLabel
 @onready var lives_label = $UI/Game/LivesLabel
@@ -31,9 +34,28 @@ const control_frames = { # frame number for the sprite
 	Microgame.ControlType.Both : 2
 }
 
+var in_credits_menu = false
+var credits_template = """
+	[b][u]%s[/u][/b]
+	by %s
+	
+	%s
+	
+"""
+@onready var credits_ui = $UI/Credits
+@onready var credits_label = $UI/Credits/Games
+
 func _ready():
-	start_new_microgame()
 	Engine.time_scale = time_scale
+	game_ui.modulate = Color(1.0, 1.0, 1.0, 0.0)
+	load_credits()
+
+func load_credits():
+	credits_label.text = "Thank you to everyone who participated!\n"
+	for i in range(microgames.size()):
+		var inst = microgames[i].instantiate() as Microgame
+		credits_label.text += credits_template % [inst.game_name, inst.creator_name, inst.game_description]
+		
 
 func start_new_microgame():
 	var rand_idx = randi() % microgames.size()
@@ -77,6 +99,10 @@ func on_microgame_done():
 		label_anim.play("lose_life") # the animation calls lose_life()
 	
 	await label_anim.animation_finished
+	
+	if lives == 0:
+		game_over()
+		return
 	start_new_microgame()
 
 
@@ -93,7 +119,6 @@ func increment_score():
 func lose_life():
 	lives -= 1
 	lives_label.text = "Lives: " + str(lives)
-	# TODO: add game over 
 
 func on_game_won():
 	if not mg_state_got:
@@ -104,3 +129,43 @@ func on_game_lost():
 	if not mg_state_got:
 		mg_state_got = true
 		mg_won = false
+
+func game_start():
+	in_game = true
+	mg_state_got = false
+	mg_won = false
+	score = 0
+	lives = 4
+	
+	score_label.text = "0"
+	lives_label.text = "Lives: " + str(lives)
+	
+	room_anim.play("game_start")
+	win_sound.play()
+	await get_tree().create_timer(1.75).timeout
+	start_new_microgame()
+
+func game_over():
+	in_game = false
+	high_score = max(score, high_score)
+	high_score_label.text = "High Score: " + str(high_score)
+	
+	room_anim.play("game_over")
+
+
+func _on_start_button_pressed():
+	if not in_game and not in_credits_menu:
+		game_start()
+
+
+func _on_back_button_pressed():
+	if not in_game and in_credits_menu:
+		in_credits_menu = false
+		main_menu_ui.visible = true
+		credits_ui.visible = false
+
+func _on_credits_button_pressed():
+	if not in_game and not in_credits_menu:
+		in_credits_menu = true
+		main_menu_ui.visible = false
+		credits_ui.visible = true

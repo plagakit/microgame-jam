@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var FALL_SPEED = 250
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = Vector2.DOWN * FALL_SPEED
 	move_and_slide()
 

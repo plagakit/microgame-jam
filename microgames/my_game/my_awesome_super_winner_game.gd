@@ -15,7 +15,7 @@ func _ready():
 	banana3.position.x = randf_range(0, 1200)
 	
 	
-func _process(delta):
+func _process(_delta):
 	print(frog.scale)
 	if frog.dead:
 		#print("YOU WIN YAYAYAYAYYAY")

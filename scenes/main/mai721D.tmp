@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cqiygaoduxj2v"]
+[gd_scene load_steps=36 format=3 uid="uid://cqiygaoduxj2v"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_c1cp2"]
 [ext_resource type="PackedScene" uid="uid://s45n2re7v8xh" path="res://microgames/SUBMISSIONS/counting_game - Riley Kay/counting_game/CountingGame.tscn" id="2_rpkjx"]
@@ -287,37 +287,19 @@ corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
-expand_margin_left = 4.0
-expand_margin_top = 8.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+expand_margin_top = 4.0
 
 [sub_resource type="Theme" id="Theme_ey2a4"]
 default_font = ExtResource("7_8m45n")
 default_font_size = 32
 Button/font_sizes/font_size = 48
 Button/styles/normal = SubResource("StyleBoxFlat_4wg7h")
-TextEdit/colors/font_readonly_color = Color(0.87451, 0.87451, 0.87451, 1)
-TextEdit/colors/font_selected_color = Color(0, 0, 0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_x52mv"]
 font = ExtResource("7_8m45n")
 font_size = 48
 outline_size = 12
 outline_color = Color(0.172549, 0.0745098, 0.321569, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_rt4my"]
-font = ExtResource("7_8m45n")
-font_size = 48
-outline_size = 12
-outline_color = Color(0.172549, 0.0745098, 0.321569, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_dleeu"]
-font = ExtResource("7_8m45n")
-font_size = 100
-outline_size = 40
-outline_color = Color(0.172549, 0.0745098, 0.321569, 1)
-shadow_size = 10
 
 [sub_resource type="Animation" id="Animation_fpbui"]
 resource_name = "RESET"
@@ -699,61 +681,6 @@ tracks/10/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_q4lip"]
-resource_name = "game_over"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../UI/Game:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../UI/MainMenu:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_8wqh4"]
-resource_name = "game_start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../UI/Game:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../UI/MainMenu:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_imhq5"]
 resource_name = "zoom_in"
 length = 0.7
@@ -1098,6 +1025,61 @@ tracks/13/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_q4lip"]
+resource_name = "game_over"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/Game:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/MainMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8wqh4"]
+resource_name = "game_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/Game:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/MainMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cu708"]
 _data = {
 "RESET": SubResource("Animation_fpbui"),
@@ -1293,118 +1275,6 @@ grow_vertical = 2
 text = "High Score: 0"
 label_settings = SubResource("LabelSettings_x52mv")
 
-[node name="gdc" type="Label" parent="UI/MainMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.5
-offset_top = -259.0
-offset_right = 120.5
-offset_bottom = -197.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "MACGDC"
-label_settings = SubResource("LabelSettings_rt4my")
-
-[node name="Jam" type="Label" parent="UI/MainMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -490.0
-offset_top = -201.0
-offset_right = 490.0
-offset_bottom = -73.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Microgame Jam 2023"
-label_settings = SubResource("LabelSettings_dleeu")
-
-[node name="Credits" type="Control" parent="UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BG" type="ColorRect" parent="UI/Credits"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.235294, 0, 0.498039, 0.396078)
-
-[node name="BackButton" type="Button" parent="UI/Credits"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -622.0
-offset_top = -700.0
-offset_right = -535.0
-offset_bottom = -601.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_ey2a4")
-text = "<"
-
-[node name="Title" type="Label" parent="UI/Credits"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -143.0
-offset_top = 61.0
-offset_right = 143.0
-offset_bottom = 123.0
-grow_horizontal = 2
-text = "Credits"
-label_settings = SubResource("LabelSettings_x52mv")
-horizontal_alignment = 1
-
-[node name="Games" type="RichTextLabel" parent="UI/Credits"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -289.0
-offset_top = -224.0
-offset_right = 263.0
-offset_bottom = 224.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_ey2a4")
-bbcode_enabled = true
-text = "[b][u]asdasdasdasdasd[/u][/b]
-sdf
-sdf
-sdf
-sd
-f
-sdf
-s
-df
-sd
-f
-sd
-f
-sdf
-sdf"
-tab_size = 0
-
 [node name="RoomAnimations" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Room")
 libraries = {
@@ -1423,9 +1293,4 @@ volume_db = 4.0
 stream = ExtResource("9_shbut")
 volume_db = 4.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 360)
-
 [connection signal="pressed" from="UI/MainMenu/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="UI/MainMenu/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="UI/Credits/BackButton" to="." method="_on_back_button_pressed"]

@@ -11,11 +11,11 @@ var axis = axis_list[randi_range(0,1)]
 # Makes sheep go in random directions
 # either horizontally or vertically, OR in + or - directions
 
-func _physics_process(delta):
+func _physics_process(_delta):
 
 	var animator = $AnimationPlayer
 	var sheep = $Sprite_Sheep
-	var collider = $CollisionShape2D
+	var _collider = $CollisionShape2D
 	
 	# Each sheep should have its own animation player, sprite,
 	# and collider associated with it.

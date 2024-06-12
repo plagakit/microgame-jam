@@ -11,7 +11,7 @@ func _ready():
 		add_child(inst)
 	
 	
-func _process(delta):
+func _process(_delta):
 	if diamond.dead:
 		lose_game.emit()
 

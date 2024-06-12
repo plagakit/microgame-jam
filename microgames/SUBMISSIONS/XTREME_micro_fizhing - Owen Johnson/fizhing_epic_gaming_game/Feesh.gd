@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var mainChar = $BigGuyMainChar/Hook
+#@onready var mainChar = $BigGuyMainChar/Hook
 
 @export var explosion : PackedScene
 
@@ -53,15 +53,15 @@ func _physics_process(delta):
 
 
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	caught = false
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	pass
 
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	$Area2D/CollisionShape2D.scale.x = 1.5
 	$CollisionShape2D.scale.x = 1.5
 	$Area2D/CollisionShape2D.scale.y = 1.5

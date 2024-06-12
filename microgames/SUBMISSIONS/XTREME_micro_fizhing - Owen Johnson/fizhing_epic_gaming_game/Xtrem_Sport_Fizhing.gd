@@ -5,7 +5,7 @@ extends Microgame
 func _ready():
 	super()
 	$Music.play()
-func _process(delta):
+func _process(_delta):
 	if $BigGuyMainChar.scale.x == 3: 
 		win_game.emit()
 

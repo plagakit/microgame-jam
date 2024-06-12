@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if position.x < 180:
 		position.x = 180
 	elif position.x > 1070:
@@ -26,7 +26,7 @@ func _process(delta):
 
 
 func _input(event):
-	event
+	#event
 	if event.is_action_pressed("keyboard_down",false,false):
 		direction = "down"
 		d = Vector2(0,1)
