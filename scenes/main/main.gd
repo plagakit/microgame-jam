@@ -21,13 +21,13 @@ var time_scale : float = 1
 
 # UI
 @onready var main_menu_ui = $UI/MainMenu
-@onready var game_ui = $UI/Game
+@onready var game_ui = $UI/Control/Game
 @onready var high_score_label = $UI/MainMenu/HighScore
-@onready var label_anim = $UI/Game/LabelAnimations
-@onready var score_label = $UI/Game/ScoreLabel
-@onready var lives_label = $UI/Game/LivesLabel
-@onready var message_label = $UI/Game/MessageLabel
-@onready var control_image = $UI/Game/ControlImage
+@onready var label_anim = $UI/Control/Game/LabelAnimations
+@onready var score_label = $UI/Control/Game/ScoreLabel
+@onready var lives_label = $UI/Control/Game/LivesLabel
+@onready var message_label = $UI/Control/Game/MessageLabel
+@onready var control_image = $UI/Control/Game/ControlImage
 const control_frames = { # frame number for the sprite
 	Microgame.ControlType.MOUSE : 1,
 	Microgame.ControlType.KEYBOARD : 0,
@@ -114,7 +114,6 @@ func unload_current_microgame():
 func increment_score():
 	score += 1
 	score_label.text = str(score)
-	# TODO: add speedup
 
 func lose_life():
 	lives -= 1
