@@ -5,7 +5,8 @@ class_name Main
 @export var instruction_time : float = 2
 @export var pre_warm_frames : int = 5
 @export var speedup_every : int = 5
-@export var speed_up_percent : float = 20
+@export var speed_up_percent : float = 15
+@export var max_speedup_percent: float = 200
 
 #var loaded_microgames = {}
 var in_game : bool = false
@@ -146,7 +147,7 @@ func on_microgame_done():
 		
 		await label_anim.animation_finished
 		
-		if score % speedup_every == 0:
+		if time_scale < max_speedup_percent and score % speedup_every == 0:
 			should_speedup = true
 		
 		if should_speedup and won:
@@ -173,9 +174,11 @@ func lose_life():
 	lives_label.text = "Lives: " + str(lives)
 
 func set_timescale(timescale: float):
+	if timescale > max_speedup_percent / 100:
+		timescale = max_speedup_percent / 100
 	time_scale = timescale
 	Engine.time_scale = timescale
-	AudioServer.playback_speed_scale = 1 + (timescale - 1) * 0.5
+	AudioServer.playback_speed_scale = timescale#1 + (timescale - 1) * 0.5
 
 func speed_up():
 	speedup_sound.play()

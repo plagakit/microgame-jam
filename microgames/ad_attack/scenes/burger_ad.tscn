@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbw6hb456b0s6"]
+
+[ext_resource type="Texture2D" uid="uid://123il6mblhm4" path="res://microgames/ad_attack/sprites/burger.png" id="1_sjhk5"]
+[ext_resource type="Shader" uid="uid://dl37t8v5ctkgh" path="res://microgames/ad_attack/scenes/scroll.gdshader" id="2_jqc0a"]
+[ext_resource type="Script" uid="uid://qnbm10hadx2" path="res://microgames/ad_attack/scenes/burger_ad.gd" id="2_rff7w"]
+[ext_resource type="Texture2D" uid="uid://c7xlkxjrl8nnh" path="res://microgames/ad_attack/sprites/squiggle.png" id="2_wb4nk"]
+[ext_resource type="Texture2D" uid="uid://bh1qui70bo04" path="res://microgames/ad_attack/sprites/10mil.png" id="3_wb4nk"]
+
+[sub_resource type="Gradient" id="Gradient_jqc0a"]
+offsets = PackedFloat32Array(0, 0.98)
+colors = PackedColorArray(0.46199992, 0, 0.77, 1, 0.39, 0.87799984, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7r5pr"]
+gradient = SubResource("Gradient_jqc0a")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7r5pr"]
+shader = ExtResource("2_jqc0a")
+shader_parameter/scroll_speed = Vector2(0.8, 0.1)
+
+[node name="BurgerAd" type="TextureRect"]
+custom_minimum_size = Vector2(280, 246)
+offset_right = 280.0
+offset_bottom = 246.0
+texture = SubResource("GradientTexture2D_7r5pr")
+script = ExtResource("2_rff7w")
+
+[node name="Squiggle" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.40784314)
+material = SubResource("ShaderMaterial_7r5pr")
+layout_mode = 0
+offset_right = 279.0
+offset_bottom = 246.0
+texture = ExtResource("2_wb4nk")
+stretch_mode = 1
+
+[node name="Burger" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sjhk5")
+
+[node name="10Mil" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 73.0
+offset_right = 153.0
+offset_bottom = 183.0
+pivot_offset = Vector2(68, 56)
+texture = ExtResource("3_wb4nk")

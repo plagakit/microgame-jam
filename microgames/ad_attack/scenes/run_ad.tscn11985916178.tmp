@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bttj24xrgvrf0"]
+
+[ext_resource type="Script" uid="uid://c61bea5v4mxna" path="res://microgames/ad_attack/scenes/run_ad.gd" id="1_e0dkt"]
+[ext_resource type="Shader" uid="uid://dl37t8v5ctkgh" path="res://microgames/ad_attack/scenes/scroll.gdshader" id="2_e0dkt"]
+[ext_resource type="Texture2D" uid="uid://62duletx0rcu" path="res://microgames/ad_attack/sprites/runpath.png" id="2_imjvw"]
+[ext_resource type="Texture2D" uid="uid://b3aom0d4lfimo" path="res://microgames/ad_attack/sprites/runguy.png" id="4_hqbe6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqbe6"]
+shader = ExtResource("2_e0dkt")
+shader_parameter/scroll_speed = Vector2(0, -0.2)
+
+[node name="RunAd" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e0dkt")
+
+[node name="Posts" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_hqbe6")
+custom_minimum_size = Vector2(192, 199)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_imjvw")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="Guy" type="Node2D" parent="."]
+position = Vector2(93, 165)
+
+[node name="Sprite2D" type="Sprite2D" parent="Guy"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_hqbe6")
+
+[node name="Timer" type="Timer" parent="Guy"]
+wait_time = 0.2
+
+[connection signal="timeout" from="Guy/Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,7 @@
 [gd_scene load_steps=47 format=3 uid="uid://cqiygaoduxj2v"]
 
 [ext_resource type="Script" uid="uid://fmxyb7nonwew" path="res://scenes/main/main.gd" id="1_c1cp2"]
+[ext_resource type="PackedScene" uid="uid://cbhht2luluosx" path="res://microgames/ad_attack/ad_attack.tscn" id="2_blune"]
 [ext_resource type="Texture2D" uid="uid://e4lvvaf2h0ca" path="res://scenes/main/sprites/door_left.png" id="3_1sdq5"]
 [ext_resource type="Texture2D" uid="uid://bjbil5iohc57a" path="res://scenes/main/sprites/room.png" id="3_y1h6j"]
 [ext_resource type="Texture2D" uid="uid://c577jxgsebcnh" path="res://scenes/main/sprites/control.png" id="4_gv218"]
@@ -11,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://diam2nhqi5des" path="res://scenes/main/sounds/music_loss.wav" id="8_slq8a"]
 [ext_resource type="AudioStream" uid="uid://cfojwl07frk3h" path="res://scenes/main/sounds/music_next.wav" id="9_shbut"]
 [ext_resource type="AudioStream" uid="uid://cgluwr7bi13ox" path="res://scenes/main/sounds/music_speedup.wav" id="12_blune"]
-[ext_resource type="PackedScene" uid="uid://blcsmx6jc2qwq" path="res://microgames/knight_game/knight_game.tscn" id="14_rofvo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ca068"]
 atlas = ExtResource("3_1sdq5")
@@ -1172,9 +1172,9 @@ _data = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_c1cp2")
-microgames = Array[PackedScene]([ExtResource("14_rofvo")])
-speedup_every = 1
-speed_up_percent = 200.0
+microgames = Array[PackedScene]([ExtResource("2_blune")])
+speedup_every = 6
+speed_up_percent = 12.0
 
 [node name="Room" type="Node2D" parent="."]
 z_index = 4095
@@ -1269,6 +1269,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="SpeedUpLabel" type="Label" parent="UI/Game/SpeedUpParent"]
 visible = false

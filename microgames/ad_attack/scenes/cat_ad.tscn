@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://mif41imws8bh"]
+
+[ext_resource type="Texture2D" uid="uid://c0xdnwphncdyi" path="res://microgames/ad_attack/sprites/cat.png" id="1_y1xcv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajfbv"]
+atlas = ExtResource("1_y1xcv")
+region = Rect2(0, 0, 318, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sico3"]
+atlas = ExtResource("1_y1xcv")
+region = Rect2(0, 75, 318, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4cbhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajfbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sico3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CatAd" type="Control"]
+custom_minimum_size = Vector2(318, 75)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 318.0
+offset_bottom = 75.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(159, 37.5)
+sprite_frames = SubResource("SpriteFrames_4cbhv")
+autoplay = "default"
+frame = 1
+frame_progress = 0.9518148

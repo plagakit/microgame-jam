@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckgw40qr3vaky"]
+
+[ext_resource type="Texture2D" uid="uid://bpe4m0ocsu86v" path="res://microgames/ad_attack/sprites/gambling.png" id="1_uwy1a"]
+[ext_resource type="Script" uid="uid://b7nqeyh822uh0" path="res://microgames/ad_attack/scenes/gambling_ad.gd" id="1_xicuy"]
+[ext_resource type="Texture2D" uid="uid://bkqxq1crxhytp" path="res://microgames/ad_attack/sprites/roulette.png" id="2_xicuy"]
+[ext_resource type="Texture2D" uid="uid://kkddhqscqev3" path="res://microgames/ad_attack/sprites/gambledollar.png" id="3_p63of"]
+[ext_resource type="Texture2D" uid="uid://b85vic71hvje" path="res://microgames/ad_attack/sprites/gamblebutton.png" id="4_d6330"]
+
+[node name="GamblingAd" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(112, 200)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -528.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xicuy")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_uwy1a")
+
+[node name="Wheel" type="Sprite2D" parent="."]
+position = Vector2(113, 191)
+scale = Vector2(1.3375, 1.3375)
+texture = ExtResource("2_xicuy")
+
+[node name="Dollar" type="CPUParticles2D" parent="."]
+position = Vector2(56, 173)
+texture = ExtResource("3_p63of")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+initial_velocity_min = 300.0
+initial_velocity_max = 400.0
+
+[node name="Money" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 143.0
+offset_right = 95.0
+offset_bottom = 189.0
+texture = ExtResource("4_d6330")

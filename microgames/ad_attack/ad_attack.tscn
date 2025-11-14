@@ -1,0 +1,139 @@
+[gd_scene load_steps=22 format=3 uid="uid://cbhht2luluosx"]
+
+[ext_resource type="Script" uid="uid://tsp3c7bj5jup" path="res://microgames/ad_attack/ad_attack.gd" id="1_otkll"]
+[ext_resource type="Texture2D" uid="uid://b5i55l16yek2l" path="res://microgames/ad_attack/sprites/background.png" id="2_1e1dk"]
+[ext_resource type="PackedScene" uid="uid://ddhoio73023ba" path="res://scenes/main/bomb_timer/bomb_timer.tscn" id="2_60xow"]
+[ext_resource type="PackedScene" uid="uid://dbw6hb456b0s6" path="res://microgames/ad_attack/scenes/burger_ad.tscn" id="3_286sa"]
+[ext_resource type="FontFile" uid="uid://dxxddb5c1lot" path="res://scenes/main/sprites/font.ttf" id="4_alixk"]
+[ext_resource type="PackedScene" uid="uid://bttj24xrgvrf0" path="res://microgames/ad_attack/scenes/run_ad.tscn" id="5_prmyi"]
+[ext_resource type="PackedScene" uid="uid://mif41imws8bh" path="res://microgames/ad_attack/scenes/cat_ad.tscn" id="6_co7h6"]
+[ext_resource type="PackedScene" uid="uid://0jlbkr1p7dkh" path="res://microgames/ad_attack/scenes/aw_snap_ad.tscn" id="7_ufcdq"]
+[ext_resource type="PackedScene" uid="uid://6018gs2iidhk" path="res://microgames/ad_attack/scenes/bird_ad.tscn" id="8_wyfxu"]
+[ext_resource type="PackedScene" uid="uid://pnoesway81i1" path="res://microgames/ad_attack/scenes/fatkawa_ad.tscn" id="9_m4ti4"]
+[ext_resource type="PackedScene" uid="uid://3rk4lsjjtvx5" path="res://microgames/ad_attack/scenes/horse_ad.tscn" id="9_u56eu"]
+[ext_resource type="PackedScene" uid="uid://ckgw40qr3vaky" path="res://microgames/ad_attack/scenes/gambling_ad.tscn" id="11_53jfr"]
+[ext_resource type="Texture2D" uid="uid://d3w5me24myusp" path="res://microgames/ad_attack/sprites/garbaga.png" id="12_cd1y5"]
+[ext_resource type="AudioStream" uid="uid://cd0xwosnvacg3" path="res://microgames/ad_attack/thankyou.wav" id="13_dj4pt"]
+[ext_resource type="AudioStream" uid="uid://b3a3mxc73jxbi" path="res://microgames/ad_attack/Eternal.Temp.wav" id="14_ermkx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alixk"]
+bg_color = Color(0.4503, 0.6258117, 0.79, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.9605742, 0.9948426, 0.9999998, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_286sa"]
+bg_color = Color(0.9969458, 3.3932179e-06, 1.92523e-07, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.7397895, 2.0094587e-06, 5.7756904e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_prmyi"]
+line_spacing = 0.0
+font = ExtResource("4_alixk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj4pt"]
+atlas = ExtResource("12_cd1y5")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ermkx"]
+atlas = ExtResource("12_cd1y5")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u56eu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj4pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ermkx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="AdAttack" type="Node2D" node_paths=PackedStringArray("bomb_timer")]
+process_mode = 1
+script = ExtResource("1_otkll")
+ad_scenes = Array[PackedScene]([ExtResource("6_co7h6"), ExtResource("5_prmyi"), ExtResource("8_wyfxu"), ExtResource("11_53jfr"), ExtResource("9_m4ti4"), ExtResource("3_286sa"), ExtResource("7_ufcdq"), ExtResource("9_u56eu")])
+game_name = "Ad Attack"
+creator_name = "Thomas"
+game_description = "Close all of the open advertisements to free a mystical creature."
+game_length = 5
+post_game_time = 1.5
+message = "Close the ads!"
+bomb_timer = NodePath("BombTimer")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("2_1e1dk")
+
+[node name="BombTimer" parent="." instance=ExtResource("2_60xow")]
+position = Vector2(67, 354)
+
+[node name="Ad" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -365.0
+offset_top = 93.0
+offset_right = -325.0
+offset_bottom = 133.0
+metadata/_edit_group_ = true
+
+[node name="Container" type="PanelContainer" parent="Ad"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_alixk")
+
+[node name="X" type="Button" parent="Ad"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_286sa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_286sa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_286sa")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_286sa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_286sa")
+
+[node name="Label" type="Label" parent="Ad/X"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+label_settings = SubResource("LabelSettings_prmyi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Creachure" type="AnimatedSprite2D" parent="."]
+position = Vector2(305, -113)
+sprite_frames = SubResource("SpriteFrames_u56eu")
+autoplay = "default"
+frame_progress = 0.15022853
+
+[node name="FinalPos" type="Marker2D" parent="."]
+position = Vector2(316, 191)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_dj4pt")
+volume_db = 2.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ermkx")
+volume_db = -18.0
+pitch_scale = 1.25
+autoplay = true
